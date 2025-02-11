@@ -10,7 +10,7 @@ public class Tipo_imovel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(unique = true)
+    @Column(nullable = false)
     private String descricao;
 
     public Integer getId() {

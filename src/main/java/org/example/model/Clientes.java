@@ -10,13 +10,13 @@ public class Clientes {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(unique = true)
+    @Column(nullable = false)
     private String nome;
 
-    @Column(unique = true)
+    @Column(nullable = false,unique = true)
     private String cpf;
 
-    @Column(unique = true)
+    @Column(nullable = false,unique = true)
     private String telefone;
 
     private String email ;

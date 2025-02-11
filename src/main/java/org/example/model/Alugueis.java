@@ -1,9 +1,18 @@
 package org.example.model;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
+import org.w3c.dom.Text;
+
+import java.util.Date;
 
 @Entity
 public class Alugueis {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(nullable = false)
+    private Date data_vencimento;
+    private float valor_pago;
+    private Date data_pagamento;
+    private Text obs;
 }

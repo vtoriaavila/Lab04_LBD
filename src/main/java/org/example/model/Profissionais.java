@@ -9,13 +9,13 @@ public class Profissionais {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
-    @Column (unique = true)
+    @Column (nullable = false)
     private String nome;
 
-    @Column (unique = true)
+    @Column (nullable = false)
     private String profissao;
 
-    @Column (unique = true)
+    @Column (nullable = false,unique = true)
     private String telefone1;
 
     private String telefone2;
