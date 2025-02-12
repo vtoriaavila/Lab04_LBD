@@ -2,14 +2,15 @@ package org.example.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
-import org.example.model.Servicos_imovel;
+import org.example.model.ServicosImovel;
+import org.example.model.ServicosImovel;
 import org.example.util.JPAUtil;
 
 import java.util.List;
 
 public class ServicosImovelRepository {
 
-    public void salvar(Servicos_imovel servico) {
+    public void salvar(ServicosImovel servico) {
         EntityManager em = JPAUtil.getEntityManager();
         em.getTransaction().begin();
         em.persist(servico);
@@ -17,10 +18,10 @@ public class ServicosImovelRepository {
         em.close();
     }
 
-    public List<Servicos_imovel> listarTodos() {
+    public List<ServicosImovel> listarTodos() {
         EntityManager em = JPAUtil.getEntityManager();
-        TypedQuery<Servicos_imovel> query = em.createQuery(
-                "SELECT s FROM Servicos_imovel s", Servicos_imovel.class);
+        TypedQuery<ServicosImovel> query = em.createQuery(
+                "SELECT s FROM ServicosImovel s", ServicosImovel.class);
         return query.getResultList();
     }
 }

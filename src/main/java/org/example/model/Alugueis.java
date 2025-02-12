@@ -6,9 +6,10 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@Getter
+@Setter
 @Entity
-@Table(name = "aluguéis")
-@Data
+@Table(name = "Alugueis")  // Mantido "Alugueis" conforme a versão mais recente
 @NoArgsConstructor
 @AllArgsConstructor
 public class Alugueis {
@@ -17,10 +18,12 @@ public class Alugueis {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NonNull
     @ManyToOne
     @JoinColumn(name = "id_locacao", nullable = false)
     private Locacao locacao;
 
+    @NonNull
     @Column(nullable = false)
     private LocalDate dataVencimento;
 

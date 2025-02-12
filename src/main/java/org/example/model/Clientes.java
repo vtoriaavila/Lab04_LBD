@@ -4,10 +4,12 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
+@Getter
+@Setter
 @Entity
-@Table(name = "clientes")
-@Data
+@Table(name = "Clientes")  // Ajustei para a versão final do nome da tabela
 @NoArgsConstructor
 @AllArgsConstructor
 public class Clientes {
@@ -16,13 +18,16 @@ public class Clientes {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, length = 45)
+    @NonNull
+    @Column(nullable = false, length = 45)  // Mantido o comprimento de 45 para o nome
     private String nome;
 
-    @Column(nullable = false, unique = true, length = 15)
+    @NonNull
+    @Column(nullable = false, unique = true, length = 15)  // Mantido o comprimento de 15 para o CPF
     private String cpf;
 
-    @Column(nullable = false, length = 12)
+    @NonNull
+    @Column(nullable = false, length = 12)  // Mantido o comprimento de 12 para o telefone
     private String telefone;
 
     @Column(nullable = false, unique = true, length = 100)
@@ -30,4 +35,16 @@ public class Clientes {
 
     @Column(nullable = false)
     private LocalDate dtNascimento;
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Clientes clientes = (Clientes) o;
+        return Objects.equals(id, clientes.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }
