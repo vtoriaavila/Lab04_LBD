@@ -1,33 +1,50 @@
 package org.example.model;
 
 import jakarta.persistence.*;
+import lombok.*;
+
+import java.math.BigDecimal;
 
 @Entity
+@Table(name = "imoveis")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Imoveis {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne
-    private Clientes id_proprietario;
+    @JoinColumn(name = "id_proprietario", nullable = false)
+    private Clientes proprietario;
 
     @ManyToOne
-    private Tipo_imovel id_tipo_imovel;
+    @JoinColumn(name = "id_tipo_imovel", nullable = false)
+    private Tipo_imovel tipo_imovel;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 200)
     private String logradouro;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 45)
     private String bairro;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 10)
     private String cep;
 
     private Integer metragem;
-    private int dormitorio;
+    private int dormitorios;
     private int banheiros;
     private int suites;
-    private int vagas_garagem;
-    private float valor_aluguel_sugerido;
-    private String obs;
+    private int vagasGaragem;
+
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal valorAluguelSugerido;
+
+    @Column(columnDefinition = "TEXT")
+    private String observacao;
+
+    @Column(nullable = false)
+    private boolean disponivel; // 🔥 Adicionado campo para indicar disponibilidade
 }

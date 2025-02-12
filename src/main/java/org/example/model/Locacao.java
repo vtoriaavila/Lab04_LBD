@@ -1,36 +1,48 @@
 package org.example.model;
 
 import jakarta.persistence.*;
+import lombok.*;
 
-import java.util.Date;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
+@Table(name = "locacao")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Locacao {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne
+    @JoinColumn(name = "id_imovel", nullable = false)
     private Imoveis imovel;
 
     @ManyToOne
+    @JoinColumn(name = "id_inquilino", nullable = false)
     private Clientes inquilino;
 
-    @Column(nullable = false)
-    private float valor_aluguel;
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal valorAluguel;
 
-    private float percentual_multa;
-
-    @Column(nullable = false)
-    private Date dia_vencimento;
+    @Column(nullable = false, precision = 5, scale = 2)
+    private BigDecimal percentualMulta;
 
     @Column(nullable = false)
-    private Date data_inicio;
-
-    private Date data_fim;
+    private int diaVencimento;
 
     @Column(nullable = false)
-    private Boolean ativo;
+    private LocalDate dataInicio;
 
-    private String obs;
+    @Column(nullable = false)
+    private LocalDate dataFim;
 
+    @Column(nullable = false)
+    private boolean ativo;
+
+    @Column(columnDefinition = "TEXT")
+    private String observacao;
 }

@@ -1,24 +1,36 @@
 package org.example.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+import lombok.*;
 
-import java.util.Date;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
+@Entity
+@Table(name = "servicos_imovel")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Servicos_imovel {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne
-    private Profissionais id_profissional;
+    @JoinColumn(name = "id_profissional", nullable = false)
+    private Profissionais profissional;
 
     @ManyToOne
-    private Imoveis id_imovel;
+    @JoinColumn(name = "id_imovel", nullable = false)
+    private Imoveis imovel;
 
-    private Date data_servico;
-    private float valor_total;
-    private String text;
+    @Column(nullable = false)
+    private LocalDate dataServico;
 
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal valorTotal;
+
+    @Column(columnDefinition = "TEXT")
+    private String observacao;
 }

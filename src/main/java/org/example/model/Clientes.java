@@ -1,84 +1,33 @@
 package org.example.model;
 
 import jakarta.persistence.*;
+import lombok.*;
 
-import java.util.Date;
-import java.util.Objects;
+import java.time.LocalDate;
 
 @Entity
+@Table(name = "clientes")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Clientes {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 45)
     private String nome;
 
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false, unique = true, length = 15)
     private String cpf;
 
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false, length = 12)
     private String telefone;
 
-    private String email ;
-    private Date dt_nascimento;
+    @Column(nullable = false, unique = true, length = 100)
+    private String email;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Date getDt_nascimento() {
-        return dt_nascimento;
-    }
-
-    public void setDt_nascimento(Date dt_nascimento) {
-        this.dt_nascimento = dt_nascimento;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Clientes clientes = (Clientes) o;
-        return Objects.equals(id, clientes.id) ;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
+    @Column(nullable = false)
+    private LocalDate dtNascimento;
 }

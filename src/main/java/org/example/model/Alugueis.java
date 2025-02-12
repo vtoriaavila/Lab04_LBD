@@ -1,21 +1,34 @@
 package org.example.model;
 
 import jakarta.persistence.*;
-import org.w3c.dom.Text;
+import lombok.*;
 
-import java.util.Date;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
+@Table(name = "aluguéis")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Alugueis {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne
-    private Locacao id_locacao;
+    @JoinColumn(name = "id_locacao", nullable = false)
+    private Locacao locacao;
 
     @Column(nullable = false)
-    private Date data_vencimento;
-    private float valor_pago;
-    private Date data_pagamento;
-    private String obs;
+    private LocalDate dataVencimento;
+
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal valorPago;
+
+    private LocalDate dataPagamento;
+
+    @Column(columnDefinition = "TEXT")
+    private String observacao;
 }
