@@ -1,21 +1,29 @@
 package org.example.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
 
 import java.util.Objects;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "Profissionais")
 public class Profissionais {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
+    @NonNull
     @Column (nullable = false)
     private String nome;
 
+    @NonNull
     @Column (nullable = false)
     private String profissao;
 
+    @NonNull
     @Column (nullable = false,unique = true)
     private String telefone1;
 
