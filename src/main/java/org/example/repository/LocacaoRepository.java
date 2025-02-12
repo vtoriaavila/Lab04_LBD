@@ -2,6 +2,7 @@ package org.example.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import org.example.model.Imoveis;
 import org.example.model.Locacao;
 import org.example.util.JPAUtil;
 
@@ -25,14 +26,15 @@ public class LocacaoRepository {
         return query.getResultList();
     }
 
-    public boolean verificarDisponibilidadeImovel(Long imovelId) {
+    public boolean verificarDisponibilidadeImovel(Imoveis imovel) {
         EntityManager em = JPAUtil.getEntityManager();
         TypedQuery<Long> query = em.createQuery(
                 "SELECT COUNT(l) FROM Locacao l WHERE l.imovel.id = :imovelId AND l.ativo = true",
                 Long.class);
-        query.setParameter("imovelId", imovelId);
+        query.setParameter("imovelId", imovel.getId());  // Acessando o id diretamente do objeto imovel
         Long count = query.getSingleResult();
         em.close();
         return count == 0;
     }
+
 }
