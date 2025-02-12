@@ -20,7 +20,7 @@ public class Profissionais {
 
     private String telefone2;
     private float valor_hora;
-    private String OBS;
+    private String obs;
 
     public String getId() {
         return id;
@@ -70,12 +70,12 @@ public class Profissionais {
         this.valor_hora = valor_hora;
     }
 
-    public String getOBS() {
-        return OBS;
+    public String getObs() {
+        return obs;
     }
 
-    public void setOBS(String OBS) {
-        this.OBS = OBS;
+    public void setObs(String OBS) {
+        this.obs = OBS;
     }
 
     @Override
