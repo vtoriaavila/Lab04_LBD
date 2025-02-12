@@ -10,7 +10,7 @@ public class Locacao {
     private Integer id;
 
     @ManyToOne
-    private Imovel imovel;
+    private Imoveis imovel;
 
     @ManyToOne
     private Clientes inquilino;
