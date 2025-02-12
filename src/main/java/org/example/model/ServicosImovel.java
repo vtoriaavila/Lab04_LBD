@@ -1,13 +1,12 @@
 package org.example.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
-public class Servicos_imovel {
+@Entity
+@Table(name = "Servicos_Imovel")
+public class ServicosImovel {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 

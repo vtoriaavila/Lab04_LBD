@@ -3,6 +3,7 @@ package org.example.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "Imoveis")
 public class Imoveis {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,7 +13,7 @@ public class Imoveis {
     private Clientes id_proprietario;
 
     @ManyToOne
-    private Tipo_imovel id_tipo_imovel;
+    private TipoImovel id_tipo_imovel;
 
     @Column(nullable = false)
     private String logradouro;

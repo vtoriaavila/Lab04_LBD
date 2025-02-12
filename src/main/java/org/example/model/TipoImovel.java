@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-public class Tipo_imovel {
+public class TipoImovel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -32,7 +32,7 @@ public class Tipo_imovel {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Tipo_imovel that = (Tipo_imovel) o;
+        TipoImovel that = (TipoImovel) o;
         return Objects.equals(id, that.id);
     }
 

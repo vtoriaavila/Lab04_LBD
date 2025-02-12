@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "Locacao")
 public class Locacao {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

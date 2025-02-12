@@ -6,6 +6,7 @@ import org.w3c.dom.Text;
 import java.util.Date;
 
 @Entity
+@Table(name = "Alugueis")
 public class Alugueis {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
