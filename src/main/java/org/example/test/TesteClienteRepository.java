@@ -3,6 +3,7 @@ package org.example.test;
 import org.example.model.Clientes;
 import org.example.repository.ClienteRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class TesteClienteRepository {
@@ -13,6 +14,9 @@ public class TesteClienteRepository {
         Clientes cliente = new Clientes();
         cliente.setNome("Carlos Silva");
         cliente.setCpf("12345678900");
+        cliente.setTelefone("598982177855");
+        cliente.setEmail("carlos@gmail.com");
+        cliente.setDtNascimento(LocalDate.of(1990, 5, 15));
 
         if (!repo.cpfJaCadastrado(cliente.getCpf())) {
             repo.salvar(cliente);

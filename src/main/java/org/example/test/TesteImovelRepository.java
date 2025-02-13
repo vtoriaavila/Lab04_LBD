@@ -13,12 +13,16 @@ public class TesteImovelRepository {
         // Criar e salvar um imóvel
         // Criar e salvar um imóvel
         Imoveis imovel = new Imoveis();
-        imovel.setLogradouro("Rua das Flores, 123");  // Corrigido de setEndereco() para setLogradouro()
+        imovel.setLogradouro("Rua das Flores, 123");
+        imovel.setBairro("Centro");
+        imovel.setCep("12345-678");
+        imovel.setMetragem(80);  // Definir a metragem
+        imovel.setDormitorios(2); // Definir número de dormitórios
+        imovel.setBanheiros(1);   // Definir número de banheiros
+        imovel.setSuites(1);      // Definir número de suítes
+        imovel.setVagasGaragem(1); // Definir número de vagas na garagem
         imovel.setValorAluguelSugerido(new BigDecimal("1500.00"));
         imovel.setDisponivel(true);
-        repo.salvar(imovel);
-        System.out.println("Imóvel cadastrado!");
-
         // Listar todos os imóveis
         List<Imoveis> imoveis = repo.listarTodos();
         System.out.println("Lista de imóveis: " + imoveis);

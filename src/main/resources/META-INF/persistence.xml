@@ -9,7 +9,7 @@
         <properties>
             <!-- Configuring JDBC properties -->
             <property name="javax.persistence.jdbc.url"
-                      value="jdbc:mysql://localhost/lab04_LBD_db?useSSL=false&amp;serverTimezone=UTC&amp;createDatabaseIfNotExist=true"/>
+                      value="jdbc:mysql://localhost/lab04_LBD_db?allowPublicKeyRetrieval=true&amp;useSSL=false&amp;serverTimezone=UTC&amp;createDatabaseIfNotExist=true"/>
 
             <property name="javax.persistence.jdbc.user" value="root" />
             <property name="javax.persistence.jdbc.password" value="senha*2572#" />
@@ -27,7 +27,7 @@
 
     </persistence-unit>
 
-    <persistence-unit name="lab05_jpa-test" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="lab04_LBD-test" transaction-type="RESOURCE_LOCAL">
 
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
@@ -35,9 +35,9 @@
         <properties>
             <!-- Configuring JDBC properties -->
             <property name="javax.persistence.jdbc.url"
-                      value="jdbc:mysql://localhost/estoque_test?useSSL=false&amp;serverTimezone=UTC&amp;createDatabaseIfNotExist=true"/>
+                      value="jdbc:mysql://localhost/lab04_LBD_test?allowPublicKeyRetrieval=true&amp;useSSL=false&amp;serverTimezone=UTC&amp;createDatabaseIfNotExist=true"/>
             <property name="javax.persistence.jdbc.user" value="root" />
-            <property name="javax.persistence.jdbc.password" value="root" />
+            <property name="javax.persistence.jdbc.password" value="senha*2572#" />
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 
 

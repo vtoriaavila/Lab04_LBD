@@ -3,6 +3,7 @@ package org.example.repository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.example.model.Alugueis;
+import org.example.model.Locacao;
 import org.example.util.JPAUtil;
 
 import java.util.List;
@@ -12,6 +13,11 @@ public class AluguelRepository {
     public void salvar(Alugueis aluguel) {
         EntityManager em = JPAUtil.getEntityManager();
         em.getTransaction().begin();
+
+        Locacao locacao = em.find(Locacao.class, aluguel.getLocacao().getId());
+        if (locacao == null) {
+            throw new IllegalArgumentException("A locação com o ID " + aluguel.getLocacao().getId() + " não existe.");
+        }
         em.persist(aluguel);
         em.getTransaction().commit();
         em.close();

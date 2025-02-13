@@ -30,6 +30,7 @@ public class TesteLocacaoRepository {
             locacao.setDataInicio(LocalDate.now());
             locacao.setDataFim(LocalDate.now().plusMonths(12));
             locacao.setValorAluguel(new BigDecimal("1500.00"));
+            locacao.setPercentualMulta(new BigDecimal("5.00")); // Valor do percentual de multa
             locacao.setAtivo(true);
             repo.salvar(locacao);
             System.out.println("Locação registrada!");
