@@ -17,6 +17,30 @@ public class ProfissionaisRepository {
         em.close();
     }
 
+    public void atualizar(Profissionais profissional) {
+        EntityManager em = JPAUtil.getEntityManager();
+        em.getTransaction().begin();
+        em.merge(profissional);
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public Profissionais buscarPorId(Integer id) {
+        EntityManager em = JPAUtil.getEntityManager();
+        return em.find(Profissionais.class, id);
+    }
+
+    public void remover(Integer id) {
+        EntityManager em = JPAUtil.getEntityManager();
+        Profissionais profissional = em.find(Profissionais.class, id);
+        if (profissional != null) {
+            em.getTransaction().begin();
+            em.remove(profissional);
+            em.getTransaction().commit();
+        }
+        em.close();
+    }
+
     public List<Profissionais> listarTodos() {
         EntityManager em = JPAUtil.getEntityManager();
         TypedQuery<Profissionais> query = em.createQuery(

@@ -9,6 +9,45 @@ import java.util.List;
 
 public class AluguelRepository {
 
+    public void salvar(Alugueis aluguel) {
+        EntityManager em = JPAUtil.getEntityManager();
+        em.getTransaction().begin();
+        em.persist(aluguel);
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public void atualizar(Alugueis aluguel) {
+        EntityManager em = JPAUtil.getEntityManager();
+        em.getTransaction().begin();
+        em.merge(aluguel);
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public Alugueis buscarPorId(Integer id) {
+        EntityManager em = JPAUtil.getEntityManager();
+        return em.find(Alugueis.class, id);
+    }
+
+    public void remover(Integer id) {
+        EntityManager em = JPAUtil.getEntityManager();
+        Alugueis aluguel = em.find(Alugueis.class, id);
+        if (aluguel != null) {
+            em.getTransaction().begin();
+            em.remove(aluguel);
+            em.getTransaction().commit();
+        }
+        em.close();
+    }
+
+    public List<Alugueis> listarTodos() {
+        EntityManager em = JPAUtil.getEntityManager();
+        TypedQuery<Alugueis> query = em.createQuery(
+                "SELECT a FROM Alugueis a", Alugueis.class);
+        return query.getResultList();
+    }
+
     public List<Alugueis> listarPorCliente(String nomeCliente) {
         EntityManager em = JPAUtil.getEntityManager();
         TypedQuery<Alugueis> query = em.createQuery(

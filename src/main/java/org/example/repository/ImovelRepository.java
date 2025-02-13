@@ -39,4 +39,28 @@ public class ImovelRepository {
         query.setParameter("preco", preco);
         return query.getResultList();
     }
+
+    public Imoveis buscarPorId(Integer id) {
+        EntityManager em = JPAUtil.getEntityManager();
+        return em.find(Imoveis.class, id);
+    }
+
+    public void atualizar(Imoveis imovel) {
+        EntityManager em = JPAUtil.getEntityManager();
+        em.getTransaction().begin();
+        em.merge(imovel);
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public void remover(Integer id) {
+        EntityManager em = JPAUtil.getEntityManager();
+        Imoveis imovel = em.find(Imoveis.class, id);
+        if (imovel != null) {
+            em.getTransaction().begin();
+            em.remove(imovel);
+            em.getTransaction().commit();
+        }
+        em.close();
+    }
 }

@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @Entity
-@Table(name = "Imoveis")  // Mantido "Imoveis" conforme a versão mais recente
+@Table(name = "Imoveis")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Imoveis {
@@ -25,7 +25,7 @@ public class Imoveis {
     @NonNull
     @ManyToOne
     @JoinColumn(name = "id_tipo_imovel", nullable = false)
-    private TipoImovel tipoImovel;  // Corrigido o nome para "tipoImovel" (estava como "id_tipo_imovel")
+    private TipoImovel tipoImovel;
 
     @NonNull
     @Column(nullable = false, length = 200)
@@ -39,10 +39,19 @@ public class Imoveis {
     @Column(nullable = false, length = 10)
     private String cep;
 
+    @Column(nullable = false)
     private Integer metragem;
+
+    @Column(nullable = false)
     private int dormitorios;
+
+    @Column(nullable = false)
     private int banheiros;
+
+    @Column(nullable = false)
     private int suites;
+
+    @Column(nullable = false)
     private int vagasGaragem;
 
     @NonNull
@@ -53,5 +62,5 @@ public class Imoveis {
     private String observacao;
 
     @Column(nullable = false)
-    private boolean disponivel; // Campo para indicar a disponibilidade do imóvel
+    private boolean disponivel;
 }

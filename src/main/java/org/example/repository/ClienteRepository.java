@@ -33,4 +33,28 @@ public class ClienteRepository {
                 "SELECT c FROM Clientes c", Clientes.class);
         return query.getResultList();
     }
+
+    public Clientes buscarPorId(Integer id) {
+        EntityManager em = JPAUtil.getEntityManager();
+        return em.find(Clientes.class, id);
+    }
+
+    public void atualizar(Clientes cliente) {
+        EntityManager em = JPAUtil.getEntityManager();
+        em.getTransaction().begin();
+        em.merge(cliente);
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public void remover(Integer id) {
+        EntityManager em = JPAUtil.getEntityManager();
+        Clientes cliente = em.find(Clientes.class, id);
+        if (cliente != null) {
+            em.getTransaction().begin();
+            em.remove(cliente);
+            em.getTransaction().commit();
+        }
+        em.close();
+    }
 }
